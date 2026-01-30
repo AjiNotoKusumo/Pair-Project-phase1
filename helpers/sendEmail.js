@@ -69,7 +69,7 @@ const generateEmailReservation = (
                     </tr>
                     <tr>
                         <td style="font-size: 16px;">
-                            <strong>Payment Event Date:</strong> ${eventDate}
+                            <strong>Event Date:</strong> ${eventDate}
                         </td>
                     </tr>
                 </table>

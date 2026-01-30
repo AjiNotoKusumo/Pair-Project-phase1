@@ -28,27 +28,29 @@ module.exports = (sequelize, DataTypes) => {
       },
       afterCreate: async (reservation, option) => {
         try {
-          // const fullReservation = await sequelize.models.Reservation.findByPk(reservation.id, {
-          //   include: [
-          //     { 
-          //       model: sequelize.models.User, 
-          //       include: [sequelize.models.Profile]
-          //     },
-          //     { model: sequelize.models.Event } 
-          //   ],
-            
-          // });
+          await reservation.reload({
+            include: [
+              { 
+                model: reservation.sequelize.models.User, 
+                include: [reservation.sequelize.models.Profile]
+              },
+              { model: reservation.sequelize.models.Event } 
+            ]
+          });
 
-          // if (!fullReservation) return;
+          if (!reservation) {
+            console.log(reservation);
+            return
+          };
 
-          // const { User, Event } = fullReservation;
-          // const email = User.email;
-          // const fullName = User.Profile.fullName;
-          // const title = Event.title
-          // const location = Event.location
-          // const eventDate = Event.eventDate
+          const { User, Event } = reservation;
+          const email = User.email;
+          const fullName = User.Profile.fullName;
+          const title = Event.title
+          const location = Event.location
+          const eventDate = Event.eventDate
 
-          // await sendReservationEmail(email, fullName, title, location, eventDate)
+          await sendReservationEmail(email, fullName, title, location, eventDate)
 
           console.log(`reservation email sent successfully`);
         

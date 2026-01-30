@@ -166,6 +166,11 @@ class Controller {
 
     static async showEventDetail(req, res) {
         try {
+            let message = ''
+            if(req.query.message){
+                message = req.query.message
+            }
+
             const eventData = await Event.findOne({
                 attributes: ['id', 'title', 'eventDate', 'location', 'imageUrl', 'capacity', 'OrganizerId', 'description', [Sequelize.fn('COUNT', Sequelize.col('Users.id')), 'attendeesCount']],
                 include: [
@@ -211,7 +216,7 @@ class Controller {
             }
             
             
-            res.render('eventDetail.ejs', {eventData, organizerName, reservationData})
+            res.render('eventDetail.ejs', {eventData, organizerName, reservationData, message})
         } catch (error) {
             res.send(error)
             console.log(error);
@@ -246,7 +251,9 @@ class Controller {
                 await Reservation.create({UserId: req.session.user.id, EventId: req.params.eventId})
             }
 
-            res.redirect(`/events/${req.params.eventId}`)
+            let message = `Reservation successful`
+
+            res.redirect(`/events/${req.params.eventId}?message=${message}`)
         } catch (error) {
             res.send(error)
             console.log(error);
