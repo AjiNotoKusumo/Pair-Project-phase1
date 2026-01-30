@@ -1,0 +1,153 @@
+<%- include("components/_header", { title: "Create Event" }) %>
+<!-- Contact Form -->
+    <div class="bg-white dark:bg-gray-900 py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Create Event</h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+            Have event you want to promote? Create one now.
+        </p>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 md:p-8">
+            <% if(errorsArray.length > 0) {%>
+                    <div class="rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/30 p-4">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                            <svg class="h-5 w-5 text-red-600 dark:text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                            </svg>
+                            </div>
+                            <div class="ml-3">
+                            <h3 class="text-sm font-medium text-red-800 dark:text-red-300">Error</h3>
+                            <div class="mt-2 text-sm text-red-700 dark:text-red-400">
+                                <ul role="list" class="list-disc pl-5 space-y-1">
+                                    <% errorsArray.forEach(error => { %>
+                                        <li><%= error %></li>
+                                    <% }) %>
+                                </ul>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+
+        <form method="post" action="/events/create" class="space-y-6">
+
+            <div>
+            <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Title
+            </label>
+            <input
+                type="text"
+                name="title"
+                id="title"
+                class="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-lime-500 dark:focus:ring-lime-400 focus:border-lime-500 dark:focus:border-lime-400 outline-none transition-colors text-gray-900 dark:text-white"
+                placeholder="Your event Title here.."
+            >
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label for="location" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Location
+                </label>
+                <input
+                type="text"
+                name="location"
+                id="location"
+                class="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-lime-500 dark:focus:ring-lime-400 focus:border-lime-500 dark:focus:border-lime-400 outline-none transition-colors text-gray-900 dark:text-white"
+                placeholder="Jakarta"
+                >
+            </div>
+
+            <div>
+                <label for="capacity" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Capacity
+                </label>
+                <input
+                type="number"
+                name="capacity"
+                id="capacity"
+                class="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-lime-500 dark:focus:ring-lime-400 focus:border-lime-500 dark:focus:border-lime-400 outline-none transition-colors text-gray-900 dark:text-white"
+                placeholder="100"
+                >
+            </div>
+            </div>
+
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+            <label for="CategoryId" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Category
+            </label>
+            <select
+                id="CategoryId"
+                name="CategoryId"
+                class="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-lime-500 dark:focus:ring-lime-400 focus:border-lime-500 dark:focus:border-lime-400 outline-none transition-colors text-gray-900 dark:text-white"
+            >
+                <option value="" disabled selected>Select a category</option>
+                <% categoriesData.forEach(category => { %>
+                    <option value="<%= category.id %>"><%= category.name %></option>
+                <% }) %>
+            </select>
+            </div>
+
+            <div>
+                <label for="eventDate" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Event Date
+                </label>
+                <input
+                type="date"
+                name="eventDate"
+                id="eventDate"
+                class="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-lime-500 dark:focus:ring-lime-400 focus:border-lime-500 dark:focus:border-lime-400 outline-none transition-colors text-gray-900 dark:text-white"
+                placeholder="100"
+                >
+            </div>
+            </div>
+
+            <div>
+            <label for="imageUrl" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Title
+            </label>
+            <input
+                type="text"
+                name="imageUrl"
+                id="imageUrl"
+                class="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-lime-500 dark:focus:ring-lime-400 focus:border-lime-500 dark:focus:border-lime-400 outline-none transition-colors text-gray-900 dark:text-white"
+                placeholder="https://www.example.com"
+            >
+            </div>
+
+            <div>
+            <label for="description" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Description
+            </label>
+            <textarea
+                id="description"
+                name="description"
+                rows="4"
+                class="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-lime-500 dark:focus:ring-lime-400 focus:border-lime-500 dark:focus:border-lime-400 outline-none transition-colors text-gray-900 dark:text-white resize-none"
+                placeholder="Tell us about your event..."
+            ></textarea>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 pt-4">
+            <button
+                type="submit"
+                class="flex-1 bg-lime-600 dark:bg-lime-500 text-white py-3 px-6 rounded-lg font-medium hover:bg-lime-700 dark:hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-500 dark:focus:ring-offset-gray-800 transition-colors"
+            >
+                Create Event
+            </button>
+            <a href="/profile/events/event-organizer" class="flex-1 text-center bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 py-3 px-6 rounded-lg font-medium border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600 transition">
+            Cancel
+            </a>
+            </div>
+        </form>
+        </div>
+    </div>
+    </div>
+    <%- include("components/_footer") %>
+</body>
+</html>

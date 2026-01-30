@@ -1,0 +1,126 @@
+<%- include("components/_header", { title: "Events" }) %>
+
+    <div class="h-screen overflow-hidden bg-gray-50">
+        <div class="mx-auto flex h-full max-w-7xl gap-6 p-6">
+
+            <!-- ================= Sidebar ================= -->
+            <aside class="w-64 shrink-0 rounded-xl bg-white p-4 shadow">
+                <h2 class="mb-4 text-lg font-semibold">Filters</h2>
+
+                <div class="space-y-4">
+                    <div>
+                        <h2 class="mb-4 text-lg font-semibold">Categories</h2>
+
+                        <div class="space-y-2">
+                            <a href="/events" class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-green-50 hover:text-green-700">All Events</a>
+
+                            <% categoriesData.forEach(category => { %>
+                                <a href="/events?CategoryId=<%= category.id %>" class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-green-50 hover:text-green-700"><%= category.name%></a>
+                            <% }) %>
+                        </div>
+                    </div>
+
+                <form method="GET" class="flex flex-1 items-center gap-3">
+                    <div>
+                        <label class="font-medium">Date</label>
+                        <input
+                            type="date"
+                            name="startDate"
+                            class="w-full rounded border px-3 py-2"
+                        />
+
+                        <input
+                            type="date"
+                            name="endDate"
+                            class="w-full rounded border px-3 py-2"
+                        />
+                    </div>
+                </div>
+            </aside>
+
+            <!-- ================= Main Content ================= -->
+            <section class="flex flex-1 flex-col gap-4">
+
+                <!-- ===== Search + Sort Bar ===== -->
+                <div class="flex items-center justify-between gap-4 rounded-xl bg-white p-4 shadow">
+        
+            <!-- Search Form -->
+            
+                <input
+                type="text"
+                name="search"
+                value="<%= search || '' %>"
+                placeholder="Search events..."
+                class="flex-1 rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+
+                <button
+                type="submit"
+                class="rounded-lg bg-green-600 px-5 py-2 font-semibold text-white hover:bg-green-700"
+                >
+                Search
+                </button>
+            </form>
+
+        <!-- Sort Links -->
+        <div x-data="{ open: false }" class="relative">
+        <!-- Button -->
+        <button
+            type="button"
+            @click="open = !open"
+            class="flex items-center gap-2 rounded-lg border bg-white px-4 py-2 text-sm font-medium hover:bg-gray-100"
+        >
+            Sort
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 9l-7 7-7-7" />
+            </svg>
+        </button>
+
+        <!-- Dropdown -->
+        <div
+            x-show="open"
+            @click.outside="open = false"
+            x-transition
+            class="absolute right-0 z-20 mt-2 w-40 rounded-lg border bg-white shadow-md"
+        >
+            <% const sorting = ['Upcoming', , 'Latest', 'Newest', 'Most Popular', 'Least Popular'] %>
+            <% sorting.forEach(sort => { %>
+                <a href="/events?sort=<%= sort %><%= (search) ? `&search=${encodeURIComponent(search)}` : '' %><%= (CategoryId) ? `&CategoryId=${CategoryId}` : ''%><%= (startDate) ? `&startDate=${startDate}` : '' %><%= (endDate) ? `&endDate=${endDate}` : '' %>" class="block px-4 py-2 text-sm hover:bg-gray-100" @click="open = false"><%= sort %></a>
+            <% }) %>
+        </div>
+        </div>
+
+        </div>
+
+
+            <!-- ===== Scrollable Card Area ===== -->
+            <div class="flex-1 overflow-y-auto rounded-xl bg-white p-6 shadow">
+
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+                <!-- ===== Event Card ===== -->
+                    <% eventsData.forEach(event => { %>
+                        <div class="overflow-hidden rounded-xl border transition hover:shadow-md">
+                            <img src="<%= event.imageUrl %>" class="h-40 w-full object-cover"/>
+
+                            <div class="p-4">
+                            <h3 class="text-lg font-semibold"><%= event.title %></h3>
+                            <p class="text-sm text-gray-500">📅 <%= event.formatDate %></p>
+                            <p class="text-sm text-gray-500">📍 <%= event.location %></p>
+                            <p class="mt-1 text-sm text-gray-500">👥 <%= event.dataValues.attendeesCount %> people joined</p>
+
+                            <a href="/events/<%= event.id %>" class="mt-4 inline-block rounded-lg bg-green-600 px-4 py-2 text-white hover:bg-green-700">View Event</a>
+                            </div>
+                        </div>
+                    <% }) %>
+
+                </div>
+            </div>
+            </section>
+        </div>
+    </div>
+    <%- include("components/_footer") %>
+</body>
+</html>

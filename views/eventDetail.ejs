@@ -1,0 +1,101 @@
+<%- include("components/_header", { title: "Event Detail" }) %>
+<div class="min-h-screen bg-white">
+
+  <!-- HERO IMAGE -->
+  <div class="w-full h-[400px] bg-gray-200">
+    <img
+      src="<%= eventData.imageUrl %>"
+      alt="Event cover"
+      class="h-full w-full object-cover"
+    />
+  </div>
+
+  <!-- CONTENT -->
+  <div class="mx-auto max-w-7xl px-4 py-10">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+
+      <!-- LEFT: EVENT DETAIL -->
+      <div class="lg:col-span-2 space-y-6">
+
+        <!-- TITLE -->
+        <div>
+          <h1 class="text-3xl font-bold text-black">
+            <%= eventData.title %>
+          </h1>
+
+          <p class="mt-2 text-sm text-gray-600">
+            By <span class="font-medium text-black"><%= organizerName.fullName %></span>
+          </p>
+        </div>
+
+        <!-- META INFO -->
+        <div class="flex flex-col gap-4 rounded border p-4 sm:flex-row sm:items-center">
+          <div class="flex items-start gap-3">
+            <div class="text-black">📅</div>
+            <div>
+              <p class="text-sm font-medium">Date & Time</p>
+              <p class="text-sm text-gray-600"><%= eventData.formatDate %></p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <div class="text-black">📍</div>
+            <div>
+              <p class="text-sm font-medium">Location</p>
+              <p class="text-sm text-gray-600"><%= eventData.location %></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- OVERVIEW -->
+        <section class="space-y-2">
+          <h2 class="text-xl font-semibold text-black">Overview</h2>
+          <p class="text-gray-700 leading-relaxed">
+            <%= eventData.description %>
+          </p>
+        </section>
+
+        <!-- ADDITIONAL INFO -->
+        <section class="space-y-2">
+          <h2 class="text-xl font-semibold text-black">Category</h2>
+          <p class="text-gray-700">
+            <%= eventData.Category.name %>
+          </p>
+        </section>
+
+      </div>
+
+      <!-- RIGHT: ACTION CARD -->
+      <div class="lg:sticky lg:top-24 h-fit">
+        <div class="rounded border p-5 shadow-sm space-y-4">
+
+          <div>
+            <p class="text-sm text-gray-500">Attendees</p>
+            <p class="text-xl font-semibold text-black"><%= eventData.dataValues.attendeesCount %> / <%= eventData.capacity %></p>
+          </div>
+
+          <div>
+            <p class="text-sm text-gray-500">Date</p>
+            <p class="text-sm text-black"><%= eventData.eventDate %></p>
+          </div>
+
+          <% if(reservationData && reservationData.status === 'Reserved') { %>
+            <a href="/events/<%= eventData.id %>/cancelation" class="block w-full rounded bg-red-500 px-4 py-3 text-center text-white font-semibold hover:bg-gray-800 transition">Cancel Reservation</a>
+          <% } else { %>
+            <a href="/events/<%= eventData.id %>/reservation" class="block w-full rounded bg-black px-4 py-3 text-center text-white font-semibold hover:bg-gray-800 transition">Reserve a spot</a>
+          <%}%>
+          
+          <p class="text-xs text-gray-500 text-center">
+            Limited capacity available
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+    <%- include("components/_footer") %>
+</body>
+</html>

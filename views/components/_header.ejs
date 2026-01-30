@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <title><%= title %></title>
+</head>
+<body>
+    <header class="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-sm">
+        <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <nav class="flex items-center justify-between h-16 lg:h-20">
+            <div class="shrink-0">
+                <a href="/" title="" class="flex group">
+                <span class="text-xl font-bold tracking-widest text-gray-900 dark:text-white uppercase group-hover:text-lime-600 group-hover:dark:text-lime-400 transition-colors">Event<span class="text-lime-600 dark:text-lime-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">Garden</span></span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex lg:items-center lg:space-x-10">
+                <a href="/" title="" class="text-base font-medium text-black dark:text-white hover:text-lime-600 dark:hover:text-lime-500 transition-all duration-200 focus:text-lime-600 dark:focus:text-lime-500"> Home </a>
+                <a href="/events" title="" class="text-base font-medium text-black dark:text-white hover:text-lime-600 dark:hover:text-lime-500 transition-all duration-200 focus:text-lime-600 dark:focus:text-lime-500"> Find Events </a>
+                
+                
+            </div>
+
+
+            <% if(user) { %>
+                <div class="relative" x-data="{ open: false }">
+                <button 
+                    @click="open = !open"
+                    @click.outside="open = false"
+                    class="h-12 w-12 rounded-full overflow-hidden border border-gray-300"
+                >
+                    <img 
+                    src="<%= (user.avatarUrl)? user.avatarUrl : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT42STwjfKg1x3AmsXTwpXHV6DmN-ZfGoJp1A&s' %>" 
+                    class="h-full w-full object-cover"
+                    />
+                </button>
+
+                <div 
+                    x-show="open"
+                    x-transition
+                    class="absolute right-0 mt-2 w-40 bg-white rounded shadow-md z-50"
+                >
+                    <a href="/profile" class="block px-4 py-2 hover:bg-gray-100">My Profile</a>
+                    
+                     <% if (user.role === 'eventOrganizer') { %>
+                        <a href="/profile/events/event-organizer" class="block px-4 py-2 hover:bg-gray-100">My Event</a>
+                        <a href="/events/create" class="block px-4 py-2 hover:bg-gray-100">Create Event</a>
+                     <% } else if (user.role === 'user') { %>
+                        <a href="/profile/events" class="block px-4 py-2 hover:bg-gray-100">My Event</a>
+                     <% } %>
+
+                    <a href="/auth/sign-out" class="block px-4 py-2 hover:bg-gray-100">Log Out</a>
+                </div>
+                </div>
+            <% } else { %>
+                <div class="hidden lg:flex lg:items-center lg:space-x-4">
+                <a href="/auth/sign-in" title="" class="rounded-full border border-black bg-transparent px-4 py-2 text-base font-semibold text-black transition-all duration-200 hover:bg-black hover:text-white focus:ring-2 focus:ring-black focus:ring-offset-2 focus:outline-none dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black dark:focus:ring-white" role="button"> Login </a>
+                <a href="/auth/sign-up" title="" class="rounded-full border border-transparent bg-black px-4 py-2 text-base font-semibold text-white transition-all duration-200 hover:bg-gray-800 focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:outline-none dark:bg-white dark:text-black dark:hover:bg-gray-200 dark:focus:ring-white" role="button"> Sign up </a>
+                </div>
+            <% } %>
+            
+
+            <button type="button" class="inline-flex rounded-md p-2 text-black transition-all duration-200 hover:bg-gray-100 focus:bg-gray-100 lg:hidden dark:text-white dark:hover:bg-gray-800 dark:focus:bg-gray-800">
+                <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+            </nav>
+        </div>
+    </header>

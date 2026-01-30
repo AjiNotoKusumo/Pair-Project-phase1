@@ -1,0 +1,114 @@
+<%- include("components/_header", { title: "Home" }) %>
+
+    <section class="relative py-24 px-6 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-lime-500 rounded-full blur-3xl opacity-20"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-lime-500 rounded-full blur-3xl opacity-20"></div>
+        </div>
+        <div class="relative max-w-4xl mx-auto">
+            <div class="backdrop-blur-xl bg-white/60 dark:bg-white/10 border border-gray-200 dark:border-white/20 rounded-3xl p-12 text-center shadow-2xl">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                Discover the Best Events
+            </h1>
+            <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-xl mx-auto">
+                Looking for stuff to do? Find new and exciting events all over the country.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/events" class="w-full sm:w-auto px-8 py-4 bg-lime-600 text-white font-semibold rounded-xl hover:bg-lime-700 transition-colors shadow-lg">
+                Start Exploring
+                </a>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-14 bg-lime-50">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+
+    <!-- Title -->
+    <h2 class="text-2xl font-semibold text-gray-900">
+      Explore by Category
+    </h2>
+
+    <!-- Description -->
+    <p class="mt-2 text-gray-600 max-w-xl mx-auto">
+      Jump straight into events you care about
+    </p>
+
+    <!-- Buttons -->
+    <div class="mt-10 flex flex-wrap justify-center gap-6">
+      <% let logo = ['🎮', '🎤', '🎓', '⚽'] %>
+
+      <% categoriesData.forEach((category, index) => { %>
+        <a
+          href="/events?CategoryId=<%= category.id %>"
+          class="group flex flex-col items-center justify-center
+                w-32 h-32 rounded-full
+                bg-white shadow-md
+                hover:bg-lime-600
+                transition"
+        >
+          <span class="text-3xl mb-2 group-hover:text-white"><%= logo[index]%></span>
+          <span class="font-medium text-gray-700 group-hover:text-white">
+            <%= category.name %>
+          </span>
+        </a>
+      <% }) %>
+
+    </div>
+  </div>
+</section>
+
+
+    <section class="py-20 bg-gradient-to-b from-gray-50 to-white">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Section header -->
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-2xl font-semibold text-gray-900">
+        Upcoming Events
+      </h2>
+
+      <a
+        href="/events?sort=Upcoming"
+        class="text-lime-600 font-medium hover:underline"
+      >
+        View all →
+      </a>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+
+      <!-- CARD -->
+      <% eventsData.forEach(event => { %>
+        <a
+        href="/events/<%= event.id %>"
+        class="bg-white rounded-xl shadow-md overflow-hidden
+               hover:-translate-y-1 hover:shadow-lg
+               transition"
+        >
+          <img
+            src="<%= event.imageUrl %>"
+            class="h-40 w-full object-cover"
+          />
+          <div class="p-4">
+            <h3 class="font-semibold text-gray-900">
+              <%= event.title %>
+            </h3>
+            <p class="text-sm text-gray-500 mt-1">
+              <%= event.location %> • <%= event.formatDate %>
+            </p>
+          </div>
+        </a>
+      <% }) %>
+
+    </div>
+  </div>
+</section>
+
+<%- include("components/_footer") %>
+
+    
+</body>
+</html>

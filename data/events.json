@@ -1,0 +1,202 @@
+[
+  {
+    "title": "Valorant Community Night",
+    "description": "Casual Valorant matches with prizes and open mic discussions.",
+    "eventDate": "2026-02-10",
+    "location": "Jakarta Gaming Hub",
+    "imageUrl": "https://source.unsplash.com/800x600/?gaming",
+    "capacity": 40,
+    "OrganizerId": 1,
+    "CategoryId": 1
+  },
+  {
+    "title": "Mobile Legends Tournament",
+    "description": "5v5 Mobile Legends tournament for amateur teams.",
+    "eventDate": "2026-02-15",
+    "location": "Bandung E-Sport Arena",
+    "imageUrl": "https://source.unsplash.com/800x600/?esports",
+    "capacity": 100,
+    "OrganizerId": 9,
+    "CategoryId": 1
+  },
+  {
+    "title": "Indie Music Live Session",
+    "description": "Live performance from local indie musicians.",
+    "eventDate": "2026-03-01",
+    "location": "Kemang Creative Space",
+    "imageUrl": "https://source.unsplash.com/800x600/?concert",
+    "capacity": 80,
+    "OrganizerId": 10,
+    "CategoryId": 2
+  },
+  {
+    "title": "Stand-Up Comedy Night",
+    "description": "An open mic comedy night featuring rising comedians.",
+    "eventDate": "2026-03-05",
+    "location": "South Jakarta Comedy Club",
+    "imageUrl": "https://source.unsplash.com/800x600/?comedy",
+    "capacity": 60,
+    "OrganizerId": 11,
+    "CategoryId": 2
+  },
+  {
+    "title": "Web Development Bootcamp",
+    "description": "Learn full-stack web development in one intensive day.",
+    "eventDate": "2026-03-12",
+    "location": "Online via Zoom",
+    "imageUrl": "https://source.unsplash.com/800x600/?coding",
+    "capacity": 150,
+    "OrganizerId": 12,
+    "CategoryId": 3
+  },
+  {
+    "title": "UI/UX Design Workshop",
+    "description": "Hands-on workshop on user-centered design principles.",
+    "eventDate": "2026-03-18",
+    "location": "Surabaya Tech Center",
+    "imageUrl": "https://source.unsplash.com/800x600/?design",
+    "capacity": 50,
+    "OrganizerId": 13,
+    "CategoryId": 3
+  },
+  {
+    "title": "Morning Yoga Session",
+    "description": "Relaxing yoga session suitable for beginners.",
+    "eventDate": "2026-03-20",
+    "location": "Bali Beachside",
+    "imageUrl": "https://source.unsplash.com/800x600/?yoga",
+    "capacity": 30,
+    "OrganizerId": 1,
+    "CategoryId": 4
+  },
+  {
+    "title": "5K Fun Run",
+    "description": "A fun 5K run promoting healthy lifestyle.",
+    "eventDate": "2026-03-22",
+    "location": "Jakarta Car Free Day",
+    "imageUrl": "https://source.unsplash.com/800x600/?running",
+    "capacity": 300,
+    "OrganizerId": 9,
+    "CategoryId": 4
+  },
+  {
+    "title": "Startup Networking Night",
+    "description": "Meet fellow founders, developers, and investors.",
+    "eventDate": "2026-03-25",
+    "location": "SCBD Jakarta",
+    "imageUrl": "https://source.unsplash.com/800x600/?networking",
+    "capacity": 10,
+    "OrganizerId": 10,
+    "CategoryId": 5
+  },
+  {
+    "title": "Photography Walk",
+    "description": "City walk focused on street photography.",
+    "eventDate": "2026-03-28",
+    "location": "Old Town Jakarta",
+    "imageUrl": "https://source.unsplash.com/800x600/?photography",
+    "capacity": 25,
+    "OrganizerId": 11,
+    "CategoryId": 5
+  },
+  {
+    "title": "Board Game Meetup",
+    "description": "Casual board games and social gathering.",
+    "eventDate": "2026-04-02",
+    "location": "Depok Community Space",
+    "imageUrl": "https://source.unsplash.com/800x600/?boardgame",
+    "capacity": 35,
+    "OrganizerId": 12,
+    "CategoryId": 1
+  },
+  {
+    "title": "Anime Movie Screening",
+    "description": "Watch and discuss a popular anime movie together.",
+    "eventDate": "2026-04-05",
+    "location": "Bekasi Cinema Hall",
+    "imageUrl": "https://source.unsplash.com/800x600/?anime",
+    "capacity": 90,
+    "OrganizerId": 13,
+    "CategoryId": 2
+  },
+  {
+    "title": "Public Speaking Class",
+    "description": "Improve confidence and communication skills.",
+    "eventDate": "2026-04-08",
+    "location": "Online via Google Meet",
+    "imageUrl": "https://source.unsplash.com/800x600/?presentation",
+    "capacity": 200,
+    "OrganizerId": 1,
+    "CategoryId": 3
+  },
+  {
+    "title": "Basketball Friendly Match",
+    "description": "Friendly basketball match for all skill levels.",
+    "eventDate": "2026-04-12",
+    "location": "Senayan Sports Complex",
+    "imageUrl": "https://source.unsplash.com/800x600/?basketball",
+    "capacity": 40,
+    "OrganizerId": 9,
+    "CategoryId": 4
+  },
+  {
+    "title": "Charity Food Drive",
+    "description": "Collecting food donations for local communities.",
+    "eventDate": "2026-04-15",
+    "location": "Bogor City Hall",
+    "imageUrl": "https://source.unsplash.com/800x600/?charity",
+    "capacity": 500,
+    "OrganizerId": 10,
+    "CategoryId": 5
+  },
+  {
+    "title": "Retro Game Night",
+    "description": "Play classic retro games from the 90s.",
+    "eventDate": "2026-04-18",
+    "location": "Jakarta Retro Cafe",
+    "imageUrl": "https://source.unsplash.com/800x600/?retro-gaming",
+    "capacity": 20,
+    "OrganizerId": 11,
+    "CategoryId": 1
+  },
+  {
+    "title": "Live Acoustic Session",
+    "description": "Relaxed acoustic music evening.",
+    "eventDate": "2026-04-20",
+    "location": "Yogyakarta Art Space",
+    "imageUrl": "https://source.unsplash.com/800x600/?acoustic",
+    "capacity": 70,
+    "OrganizerId": 12,
+    "CategoryId": 2
+  },
+  {
+    "title": "Data Analytics Crash Course",
+    "description": "Introductory course on data analytics fundamentals.",
+    "eventDate": "2026-04-23",
+    "location": "Online Webinar",
+    "imageUrl": "https://source.unsplash.com/800x600/?data",
+    "capacity": 180,
+    "OrganizerId": 13,
+    "CategoryId": 3
+  },
+  {
+    "title": "Badminton Doubles Meetup",
+    "description": "Casual badminton games with rotation system.",
+    "eventDate": "2026-04-26",
+    "location": "Tangerang Sports Hall",
+    "imageUrl": "https://source.unsplash.com/800x600/?badminton",
+    "capacity": 8,
+    "OrganizerId": 1,
+    "CategoryId": 4
+  },
+  {
+    "title": "Community Volunteer Day",
+    "description": "Help clean public spaces and plant trees.",
+    "eventDate": "2026-04-30",
+    "location": "Bekasi Green Park",
+    "imageUrl": "https://source.unsplash.com/800x600/?volunteer",
+    "capacity": 250,
+    "OrganizerId": 9,
+    "CategoryId": 5
+  }
+]
